@@ -55,7 +55,8 @@
 
             <br/><br/>
 
-           <people v-bind:list="people"></people>
+            <!-- People Template Output -->
+            <people v-bind:list="people"></people>
 
         </div>
         <div class="col-sm-6">
@@ -73,7 +74,8 @@
                {{ $data | json}}
            </pre>
 
-           <template id="peopleTpl">
+           <!-- People Template -->
+           <template id="people-template">
                People:
                <ul v-for="p in list">
                    <li>{{p.name.first}}</li>

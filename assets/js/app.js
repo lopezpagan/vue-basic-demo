@@ -50,7 +50,7 @@ var VueDemo = new Vue({
     },
     components: {
         'people': {
-            template: '#peopleTpl',
+            template: '#people-template',
             props: ['list']
         }
     }
