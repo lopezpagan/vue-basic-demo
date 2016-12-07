@@ -3,34 +3,95 @@
 <head>
     <title>Inicio</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
+
 </head>
 <body class="animated wow fadeIn">
 
-<div id="app" class="container">
-   <div class="wrapper">
+<div id="VueDemo" class="container">
+    <div class="row">
        <h1>Vue Basic Demo <small>For practice</small></h1>
-       <p>{{message}}</p>
-   </div>
-    <div class="wrapper">
-        <form class="form-inline" action="">
-            <div class="form-group">
-                <label for="" class="">Enter your name:</label>
-                <input type="text" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-lg btn-default" @click="">Submit</button>
-        </form>
+       <p v-if="toggle">{{ message }}</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form @submit.prevent="AlertMe">
+                <div class="form-group">
+                    <label for="firstname">Enter your name:</label>
+                    <input class="form-control" v-model="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Enter your email:</label>
+                    <input class="form-control" v-model="email">
+                </div>
+                <div class="form-group">
+                    <label for="earnings">Enter your earnings:</label>
+                    <input class="form-control" v-model="earnings">
+                </div>
+
+                <div class="form-group">
+                    <label>The List:</label><br/><br/>
+
+                    <input type="checkbox" id="one" value="vue.js"  v-model="checklist">
+                    <label for="one">Vue</label>
+
+                    <input type="checkbox" id="two" value="angular.js"  v-model="checklist">
+                    <label for="two">Angular</label>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="toggle">Toggle:</label>
+                    <input type="checkbox" v-model="toggle">
+
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-default">Submit</button>
+            </form>
+
+            <br/><br/>
+
+           <people v-bind:list="people"></people>
+
+        </div>
+        <div class="col-sm-6">
+           <p>{{firstname ? "Mi nombre es "+firstname : "Quién soy?"}}</p>
+           <p>{{email }}</p>
+           <p>{{checklist}}</p>
+           <ul v-for="check in checklist">
+               <li>{{check | uppercase}}</li>
+           </ul>
+
+           <p>{{toggle ? "Yes" : "No"}}</p>
+           <p>{{earnings | currency}}</p>
+
+           <pre>
+               {{ $data | json}}
+           </pre>
+
+           <template id="peopleTpl">
+               People:
+               <ul v-for="p in list">
+                   <li>{{p.name.first}}</li>
+               </ul>
+           </template>
+        </div>
     </div>
 </div>
 
+
 <!-- SCRIPTS -->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.js"></script>-->
+<!--<script src="assets/lib/vue.js"></script>-->
+<script src="assets/lib/1.0.16.vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="assets/lib/bootstrap.min.js"></script>
-<script src="assets/lib/vue.min.js"></script>
-<script src="assets/js/app.js"></script>
 <script src="assets/lib/wow.min.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
