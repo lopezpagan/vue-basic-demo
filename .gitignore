@@ -1,4 +1,7 @@
-.sass-cache
-.DS_Store
-node_modules/
+/.sass-cache
+/.DS_Store
+/node_modules/
+/sources/
+/config.rb
+/sample-bg-opacity.html
 
